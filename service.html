@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Услуга — СТО «Вихрь мотора»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="inner">
+<header class="header solid">
+  <a href="index.html" class="logo" aria-label="На главную"><img src="img/logo.png" alt="" onerror="this.remove()"></a>
+  <button class="burger" aria-label="Меню"><span></span><span></span></button>
+  <nav class="nav">
+    <a href="index.html#about">о нас</a>
+    <a href="index.html#services">услуги</a>
+    <a href="index.html#prices">цены</a>
+    <a href="index.html#reviews">отзывы</a>
+    <a href="index.html#map" class="loc">Боровая</a>
+  </nav>
+</header>
+<main class="service">
+  <a href="index.html#services" class="back">‹ все услуги</a>
+  <h1 id="s-title"></h1>
+  <img id="s-img" alt="">
+  <div id="s-text" class="prose"></div>
+  <a href="tel:+375333514040" class="btn btn-main">позвонить</a>
+</main>
+<footer class="footer">
+  <div><b>СТО «Вихрь мотора»</b><span>Ремонт и обслуживание легковых автомобилей и микроавтобусов</span><span>Без выходных</span></div>
+  <div><a href="service.html?id=suspension">Диагностика и ремонт подвески</a><a href="service.html?id=grm">Замена ремней ГРМ</a><a href="service.html?id=engine">Ремонт двигателя</a><a href="index.html#contacts">Контакты</a></div>
+  <div><a href="tel:+375333514040">+375 33 351-40-40</a><a href="tel:+375293514040">+375 29 351-40-40</a><a href="mailto:engine-vortex@yandex.by">engine-vortex@yandex.by</a></div>
+</footer>
+<script src="js/services.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const s = SERVICES.find(x => x.id === new URLSearchParams(location.search).get('id')) || SERVICES[0];
+  document.title = s.title + ' — СТО «Вихрь мотора»';
+  $('#s-title').textContent = s.title;
+  $('#s-img').src = s.img; $('#s-img').alt = s.title;
+  $('#s-text').innerHTML = s.html || s.text.map(p => `<p>${p}</p>`).join('');
+</script>
+</body>
+</html>
